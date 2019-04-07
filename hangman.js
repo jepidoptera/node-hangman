@@ -32,7 +32,7 @@ keypress = require('keypress');
 keypress(process.stdin);
 
 // read and parse the words file
-var possible_words = fs.readFileSync('words.txt', 'utf8').split(", ");
+var possible_words = fs.readFileSync('words.txt', 'utf8').split("\n");
 // print(possible_words.join("**"), " ...total: ", possible_words.length);
 
 // keep track of letters guessed, valid guesses, and guesses remaining

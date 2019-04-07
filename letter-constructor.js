@@ -9,6 +9,7 @@ function Letter(value) {
         // let's not be case-sensitive
         guess = guess.toLowerCase();
         if (this.value === guess) {
+            // guessed right
             this.guessed = true;
             return true;
         }

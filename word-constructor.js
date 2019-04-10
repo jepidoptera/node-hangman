@@ -31,7 +31,7 @@ class Word {
         }
         else {
             // whole thing in blue
-            console.log(chalk.blue(this.letters
+            console.log(chalk.blue.bgWhite.bold(this.letters
                 .map((letter) => { 
                     return letter.value; 
                 }).join(' ')));
@@ -49,7 +49,7 @@ class Word {
                 this.unGuessed --;
             }
         });
-        console.log(this.unGuessed);
+        // console.log(this.unGuessed);
         // return result (true / false)
         return guessedRight;
     }

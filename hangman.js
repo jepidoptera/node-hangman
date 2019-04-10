@@ -46,7 +46,7 @@ var guessWord;
 newWord();
 function newWord() {
     // construct a Word object from one of those at random
-    guessWord = new Word(possible_words[Math.floor(Math.random() * possible_words.length)]);
+    guessWord = new Word(possible_words.splice(Math.floor(Math.random() * possible_words.length), 1)[0]);
     // initially show the word
     print ("The mystery word is: ");
     guessWord.display();
@@ -55,7 +55,6 @@ function newWord() {
     lettersGuessed = '';
     guessesRemaining = maxGuesses;
 }
-
 
 function guess (letter) {
     // is this a valid guess?
@@ -83,6 +82,11 @@ function guess (letter) {
 
     if (guessWord.finished) {
         print (chalk.yellow("You guessed the whole word!"));
+        if (possible_words.length == 0) {
+            print ("You guessed all the words!");
+            print ("Goodbye!");
+            process.exit();
+        }
         print ("starting over - new word.");
         newWord();
     }
@@ -106,7 +110,7 @@ stdin.resume();
 // i don't want binary, do you?
 stdin.setEncoding( 'utf8' );
 
-// on any data into stdin
+// on keypress
 stdin.on( 'keypress', function(char, key)
 {
     // ctrl-c or escape key
